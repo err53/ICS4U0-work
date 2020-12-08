@@ -1,0 +1,1 @@
+{"user":{"name":"Jason","notifications":[{"_appName":"Weather","active":true,"temperature":12,"conditions":"sunny"},{"_appName":"Email","active":true,"from":"Alice","to":"Bob","subject":"Test Email","body":"Hi there,\nThis is the body of the email\nRegards, Alice"}]}}
