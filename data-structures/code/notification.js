@@ -1,11 +1,11 @@
 class Notification {
   constructor(appName) {
     this._appName = appName;
-    this.active = true;
+    this._active = true;
   }
   setFromObject(obj) {
     this._appName = obj._appName;
-    this.active = obj.active;
+    this._active = obj._active;
     return this;
   }
   getAppName() {
@@ -14,8 +14,11 @@ class Notification {
   notificationText() {
     return `Notification from ${this._appName}`;
   }
+  isActive() {
+    return this._active
+  }
   dismiss() {
-    this.active = false;
+    this._active = false;
   }
 }
 

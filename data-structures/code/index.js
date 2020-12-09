@@ -34,7 +34,9 @@ var EmailNotification = require("./emailNotification");
 
   console.log("Here are the notifications: ");
   db.user.notifications.map((notification) => {
-    console.log(notification.notificationText());
+    if (notification.isActive()) {
+      console.log(notification.notificationText());
+    }
   });
 
   console.log(); // send a newline to space stuff out
@@ -48,7 +50,6 @@ var EmailNotification = require("./emailNotification");
   db.user.notifications[1].replyToEmail("Alright, coolio!");
   console.log(); // send a newline to space stuff out
 
-  
   console.log("final state");
   console.log(JSON.stringify(db, null, 2));
   fs.writeFile("db.json", JSON.stringify(db));

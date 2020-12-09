@@ -10,8 +10,8 @@ class User {
   setFromObject(obj) {
     this.name = obj.name;
     obj.notifications.map((notification) => {
-      let tempNotification;
-      switch (notification._appName) {
+      let tempNotification = new Notification().setFromObject(notification);
+      switch (tempNotification.getAppName()) {
         case "Email":
           tempNotification = new EmailNotification();
           break;

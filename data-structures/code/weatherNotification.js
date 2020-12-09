@@ -7,22 +7,22 @@ function randBetween(min, max) {
 class WeatherNotification extends Notification {
   constructor(temperature, conditions) {
     super("Weather");
-    this.temperature = temperature;
-    this.conditions = conditions;
+    this._temperature = temperature;
+    this._conditions = conditions;
   }
   setFromObject(obj) {
     super.setFromObject(obj);
-    this.temperature = obj.temperature;
-    this.conditions = obj.conditions;
+    this._temperature = obj._temperature;
+    this._conditions = obj._conditions;
     return this;
   }
   notificationText() {
-    return `The temperature is ${this.temperature} degrees Celsius and it is currently ${this.conditions}`;
+    return `The temperature is ${this._temperature} degrees Celsius and it is currently ${this._conditions}`;
   }
   updateWeather() {
     // this would pull from an API but I'm lazy
     console.log("Weather updated!");
-    this.temperature = randBetween(-10, 20);
+    this._temperature = randBetween(-10, 20);
   }
 }
 
