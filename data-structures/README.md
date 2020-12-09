@@ -1,4 +1,4 @@
 # Data Structures Assignment
 
 TODO:
-- [ ] Update visibility of vars in UML diagram and JS
+- [x] Update visibility of vars in UML diagram and JS
