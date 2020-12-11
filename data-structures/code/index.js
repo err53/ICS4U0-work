@@ -32,13 +32,7 @@ var EmailNotification = require("./emailNotification");
     );
   }
 
-  console.log("Here are the notifications: ");
-  db.user.notifications.map((notification) => {
-    if (notification.isActive()) {
-      console.log(notification.notificationText());
-    }
-  });
-
+  db.user.printNotifications()
   console.log(); // send a newline to space stuff out
 
   console.log("initial state");
@@ -48,6 +42,10 @@ var EmailNotification = require("./emailNotification");
   // update content
   db.user.notifications[0].updateWeather();
   db.user.notifications[1].replyToEmail("Alright, coolio!");
+  db.user.clearNotifications();
+  console.log(); // send a newline to space stuff out
+
+  db.user.printNotifications()
   console.log(); // send a newline to space stuff out
 
   console.log("final state");

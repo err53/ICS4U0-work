@@ -1,7 +1,8 @@
 class Notification {
+  _appName = "";
+  _active = true;
   constructor(appName) {
     this._appName = appName;
-    this._active = true;
   }
   setFromObject(obj) {
     this._appName = obj._appName;

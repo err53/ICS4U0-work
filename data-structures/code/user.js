@@ -3,9 +3,10 @@ var EmailNotification = require("./emailNotification");
 var WeatherNotification = require("./weatherNotification");
 
 class User {
+  name = "";
+  notifications = [];
   constructor(name) {
     this.name = name;
-    this.notifications = [];
   }
   setFromObject(obj) {
     this.name = obj.name;
@@ -28,6 +29,14 @@ class User {
   clearNotifications() {
     this.notifications.map((notification) => {
       notification.dismiss();
+    });
+  }
+  printNotifications() {
+    console.log("Here are the notifications: ");
+    this.notifications.map((notification) => {
+      if (notification.isActive()) {
+        console.log(notification.notificationText());
+      }
     });
   }
 }

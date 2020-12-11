@@ -1,6 +1,10 @@
 const Notification = require("./notification")
 
 class EmailNotification extends Notification {
+  _from = "";
+  _to = "";
+  _subject = "";
+  _body = "";
   constructor(from, to, subject, body) {
     super("Email");
     this._from = from;

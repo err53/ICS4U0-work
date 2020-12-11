@@ -5,6 +5,8 @@ function randBetween(min, max) {
 }
 
 class WeatherNotification extends Notification {
+  _temperature = 0;
+  _conditions = "";
   constructor(temperature, conditions) {
     super("Weather");
     this._temperature = temperature;
