@@ -13,12 +13,16 @@ var EmailNotification = require("./emailNotification");
     console.error(error.message);
   }
 
+
+  // Create user if empty
   if (!db.user) {
     db.user = new User(prompt("What is your name? "));
   } else {
     db.user = new User().setFromObject(db.user);
   }
 
+
+  // Create some notifications
   if (db.user.notifications.length == 0) {
     db.user.notifications.push(new WeatherNotification(10, "sunny"));
 
@@ -32,6 +36,7 @@ var EmailNotification = require("./emailNotification");
     );
   }
 
+  // Print existing notifications
   db.user.printNotifications()
   console.log(); // send a newline to space stuff out
 
@@ -50,5 +55,7 @@ var EmailNotification = require("./emailNotification");
 
   console.log("final state");
   console.log(JSON.stringify(db, null, 2));
-  fs.writeFile("db.json", JSON.stringify(db));
+
+  // Write to file
+  await fs.writeFile("db.json", JSON.stringify(db));
 })();
