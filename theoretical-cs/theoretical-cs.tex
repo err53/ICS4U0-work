@@ -1,0 +1,117 @@
+\documentclass[jou]{apa7}
+
+\usepackage[
+backend=biber,
+style=apa,
+citestyle=apa
+]{biblatex}
+
+\addbibresource{theoretical-cs.bib}
+
+\title{Concurrency Theory and Applications}
+\shorttitle{Concurrency Theory}
+\leftheader{Huang}
+\author{Jason Huang}
+\authorsaffiliations{John Fraser Secondary School}
+\course{ICS4U0}
+\professor{Mr. Seidel}
+\duedate{December 16, 2020}
+\date{\today}
+
+\abstract{
+  Concurrency theory sounds like an abstract concept that would have no bearing on anything used in the real world.
+  On the contrary, the field has led to the vast computing power seen in multi-core processors today,
+  and the data integrity guarantees of modern storage systems.
+  This paper will explain some of the practical applications of concurrency theory in use today.
+}
+
+\begin{document}
+
+\maketitle
+
+\section{What is Concurrency Theory?}
+Before we are able to define what concurrency theory is,
+we must first define what concurrency is.
+
+Concurrency is being able to overlap multiple running processes at the same time.
+This does not require multiple cores,
+but it does require a different approach to programming:
+since it is not guaranteed that a set of instructions you write will all be processed at around the same time,
+you need to take into account other processes that may access the same resource you are accessing.
+
+For example, if two concurrent processes are incrementing a variable,
+each process needs to perform 3 steps:
+
+\begin{enumerate}
+  \item Getting the value from the variable
+  \item Incrementing the value
+  \item Updating the variable with the new value
+\end{enumerate}
+
+Say that process A runs first, and gets the value from the variable.
+A problem occurs if process B gets the variable after A has retrieved the variable, but before it writes the value back.
+Instead of the value in the variable being incremented twice, it only gets incremented once.
+
+A common way to accomplish this is through the use of mutual exclusion.
+By providing some way for different processes to lock and unlock variables,
+it can be ensured that data is not overwritten.
+\autocite{lamportTuringLectureTheComputer2015}
+
+\section{Impact on a Collaborative Research Field}
+The implementation of concurrency is incredibly important in many fields,
+but this paper will only touch on one of them.
+
+In the growing world of financial technology, or fintech,
+data integrity is incredibly important.
+Whether user data, financial records and transactions, or internal company data,
+data loss is simply not an option when managing people's money.
+
+Furthermore, the technology part of fintech is intended to make financial services more accessible to the general public.
+However, more accessibility also means a larger user base,
+and more actions being performed by users during the same time.
+Billions of transactions happen daily,
+and the software that runs these services must be able to keep up with the demand.
+\autocite{foggSoftwareTestingFintech2020}
+
+By taking into account the developments in the field of concurrency,
+the field of fintech would be able to service more users,
+while still keeping high data integrity guarantees.
+
+\section{Careers}
+A career that exists in the collaborative research field discussed above would be a financial analyst.
+In a financial firm, analysts help the firm make investment decisions,
+and in corporate firms,
+financial analysts predict how the company's products will perform in the future,
+and where the company should allocate more resources to improve profits.
+This is incredibly important when running a finance company,
+especially if the company would for part of their profits to come from investing deposited or managed money.
+\autocite{segalBecomingFinancialAnalyst2020}
+
+Another career that directly relates to this research field are database analysts, or DBAs.
+DBAs are in charge of designing, deploying, and administering databases.
+They are crucial for managing large amounts of data,
+while keeping said data quickly accessible to users.
+Database analysts work directly with developers and the IT department to plan new database deployments,
+implement said deployments,
+and making sure the databases are secure and performing well.
+\autocite{jobheroDatabaseAnalystJob2020}
+
+\section{Education}
+Becoming a database analyst generally requires at least a bachelor's degree in either computer science or mathematics,
+as well as having programming experience.
+\autocite{governmentofcanadaDatabaseAnalystCanada2020}
+Specifically, many jobs would like knowledge in languages like
+SQL, Javascript, CSS, HTML, and PHP, as well as database and data modelling experience.
+\autocite{jobheroDatabaseAnalystJob2020}
+There are also a fair few certifications that may prove to be useful,
+such as the MCSE: Data Management and Analytics certification,
+designed for more senior DBAs,
+which requires a database proficiency exam,
+as well as a prerequisite MCSA certification in databases,
+business intelligence,
+or machine learning
+\autocite{aroraBestDataAnalytics2020}
+
+\printbibliography
+
+\end{document}
