@@ -17,6 +17,12 @@
   },
   "homepage": "https://github.com/jhthenerd/cs-12#readme",
   "dependencies": {
-    "prompt-sync": "^4.2.0"
+    "prompt-sync": "^4.2.0",
+    "random": "^2.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "prettier": "2.2.1"
   }
 }
