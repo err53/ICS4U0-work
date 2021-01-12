@@ -4,45 +4,39 @@ var WeatherNotification = require("./weatherNotification");
 
 /** A class representing a user */
 class User {
-  name = "";
+  #name = "";
   notifications = [];
 
   /**
    * Create a user given a name
-   * @param {string} name - The name of the user
+   * @param {User} user - An object representation of a user
    */
-  constructor(name) {
-    this.name = name;
-  }
-
-  /**
-   * Set the state of the user given an object representation
-   * @param {object} obj - An object representation of a user
-   */
-  setFromObject(obj) {
-    // Set name
-    this.name = obj.name;
+  constructor({ name, notifications }) {
+    this.#name = name;
 
     // Set notifications
-    obj.notifications.map((notification) => {
-      // Create a temporary generic notification
-      let tempNotification = new Notification().setFromObject(notification);
+    if (Array.isArray(notifications)) {
+      notifications.map((notification) => {
+        // Create a temporary generic notification
+        let tempNotification = new Notification(notification);
 
-      // Set notification type using getAppName()
-      switch (tempNotification.getAppName()) {
-        case "Email":
-          tempNotification = new EmailNotification();
-          break;
-        case "Weather":
-          tempNotification = new WeatherNotification();
-          break;
-        default:
-          tempNotification = new Notification();
-      }
-      // Push notification into array
-      this.notifications.push(tempNotification.setFromObject(notification));
-    });
-    return this;
+        // Set notification type using getAppName()
+        switch (tempNotification.appName) {
+          case "Email":
+            tempNotification = new EmailNotification(notification);
+            break;
+          case "Weather":
+            tempNotification = new WeatherNotification(notification);
+            break;
+        }
+        // Push notification into array
+        this.notifications.push(tempNotification);
+      });
+    }
+  }
+
+  get name() {
+    return this.#name;
   }
 
   /** Clear all notifications */
@@ -56,10 +50,17 @@ class User {
   printNotifications() {
     console.log("Here are the notifications: ");
     this.notifications.map((notification) => {
-      if (notification.isActive()) {
+      if (notification.isActive) {
         console.log(notification.notificationText());
       }
     });
+  }
+
+  toJSON() {
+    return {
+      name: this.#name,
+      notifications: this.notifications,
+    };
   }
 }
 

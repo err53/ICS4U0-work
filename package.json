@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jhthenerd/cs-12#readme",
   "dependencies": {
+    "lorem-ipsum": "^2.0.3",
     "prompt-sync": "^4.2.0",
     "random": "^2.2.0"
   },

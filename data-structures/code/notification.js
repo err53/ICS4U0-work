@@ -1,56 +1,71 @@
-
-/** 
+/**
  * Class representing a notification from a generic app
  * Can be expanded on through inheritance to provide the user with more functionality
  */
 class Notification {
-  _appName = "";
-  _active = true;
+  #appName;
+  #active;
+  #date;
 
   /**
    * Create a generic notification
-   * @param {string} appName - The name of the app
+   * @param {Notification} notification An object representing a notification
    */
-  constructor(appName) {
-    this._appName = appName;
+  constructor({ appName, active, date }) {
+    this.#appName = appName ? appName : "";
+    this.#active = active ? active : true;
+    this.#date = date ? new Date(date) : new Date(Date.now());
   }
 
   /**
-   * Set the state of a generic notification from an object
-   * @param {object} obj - An object representing a notification
+   * Get the name of the app
    */
-  setFromObject(obj) {
-    this._appName = obj._appName;
-    this._active = obj._active;
-    return this;
-  }
-
-  /**
-   * Return the name of the app
-   */
-  getAppName() {
-    return this._appName;
+  get appName() {
+    return this.#appName;
   }
 
   /**
    * Get the text of your notification
    */
-  notificationText() {
-    return `Notification from ${this._appName}`;
+  get notificationText() {
+    return `Notification from ${this.#appName}`;
   }
 
   /**
    * Get whether the notification is currently active
    */
-  isActive() {
-    return this._active
+  get active() {
+    return this.#active;
   }
 
   /**
    * Dismiss the notification
    */
   dismiss() {
-    this._active = false;
+    this.#active = false;
+  }
+
+  /**
+   * Get the notification date
+   */
+  get date() {
+    return this.#date;
+  }
+
+  /**
+   * Set the notification date
+   * @param {Date} date The new date object
+   */
+  set date(date) {
+    this.#date = date;
+  }
+
+  toJSON() {
+    return {
+      appName: this.#appName,
+      active: this.#active,
+      date: this.#date,
+    };
   }
 }
 
