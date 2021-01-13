@@ -97,7 +97,6 @@ const run = async (reps, objects) => {
     performance.measure(`builtinSort-${i}`, `builtinSort-start-${i}`, `builtinSort-end-${i}`);
 
     // sanity checks
-    assert.notDeepStrictEqual(db.user.notifications, builtInSortedArray);
     assert.deepStrictEqual(bubbleSortedArray, builtInSortedArray);
     assert.deepStrictEqual(insertionSortedArray, builtInSortedArray);
     assert.deepStrictEqual(selectionSortedArray, builtInSortedArray);
@@ -108,7 +107,7 @@ const run = async (reps, objects) => {
     // test searches
     console.log(chalk.bold.underline("\nSearching Algos"));
 
-    const randomIdx = random.int(0, db.user.notifications.length);
+    const randomIdx = random.int(0, db.user.notifications.length - 1);
     const randomSearchNotification = db.user.notifications[randomIdx];
 
     performance.mark(`linearSearch-start-${i}`);
