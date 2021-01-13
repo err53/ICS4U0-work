@@ -7,7 +7,7 @@ const random = require("random");
 const chalk = require("chalk");
 const { performance, PerformanceObserver } = require("perf_hooks");
 
-const User = require("../../data-structures/code/user");
+const User = require("../../../data-structures/code/user");
 const { generateData } = require("./generateData");
 
 const perfObserver = new PerformanceObserver((items) => {

@@ -1,6 +1,6 @@
-const User = require("../../data-structures/code/user");
-const WeatherNotification = require("../../data-structures/code/weatherNotification");
-const EmailNotification = require("../../data-structures/code/emailNotification");
+const User = require("../../../data-structures/code/user");
+const WeatherNotification = require("../../../data-structures/code/weatherNotification");
+const EmailNotification = require("../../../data-structures/code/emailNotification");
 
 const fs = require("fs/promises");
 const random = require("random");
