@@ -23,12 +23,12 @@ function randomDate(start, end) {
   );
 }
 
-(async () => {
+let generateData = async (count) => {
   var db = {};
 
   db.user = new User({ name: "TestUser" });
 
-  for (let i = 0; i < process.argv[2]; i++) {
+  for (let i = 0; i < count; i++) {
     let isEmail = random.boolean();
     if (isEmail) {
       db.user.notifications.push(
@@ -51,10 +51,10 @@ function randomDate(start, end) {
     }
   }
 
-  // Print existing notifications
-  // db.user.printNotifications();
-  // console.log(); // send a newline to space stuff out
-
   // Write to file
   await fs.writeFile("db.json", JSON.stringify(db));
-})();
+};
+
+exports.generateData = generateData;
+
+generateData(process.argv[2]);
