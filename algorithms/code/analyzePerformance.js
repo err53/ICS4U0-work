@@ -1,7 +1,8 @@
 const fs = require("fs");
 
 const getAlgoAvg = (name, perfData) => {
-  const vals = perfData.filter((element) => element.name.includes(name));
+  let re = new RegExp(`${name}-\\d`);
+  const vals = perfData.filter((element) => re.test(element.name));
   let total = 0;
   vals.forEach((element) => {
     total += element.duration;

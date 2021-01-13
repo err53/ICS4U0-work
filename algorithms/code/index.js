@@ -19,13 +19,10 @@ const perfObserver = new PerformanceObserver((items) => {
   }
   items.getEntries().map((item) => {
     perf.push(item);
-    console.log(item);
+    // console.log(item);
   });
   fsNoAsync.writeFileSync("perf.json", JSON.stringify(perf));
 });
-
-const asdf = ""
-asdf.
 
 /**
  *
@@ -33,6 +30,10 @@ asdf.
  * @param {int} objects The number of objects to generate per rep
  */
 const run = async (reps, objects) => {
+  // delete old data
+  await fs.rm("perf.json");
+  await fs.rm("db.json");
+
   // Setup perf logging
   perfObserver.observe({ entryTypes: ["measure"], buffer: true });
 
@@ -133,7 +134,6 @@ const run = async (reps, objects) => {
       randomSearchNotification
     );
     performance.mark(`binarySearch-end-${i}`);
-    performance.mark(`binarySearchSort-end-${i}`);
     performance.measure(
       `binarySearch-${i}`,
       `binarySearch-start-${i}`,
@@ -142,7 +142,7 @@ const run = async (reps, objects) => {
     performance.measure(
       `binarySearchSort-${i}`,
       `binarySearchSort-start-${i}`,
-      `binarySearchSort-end-${i}`
+      `binarySearch-end-${i}`
     );
 
     // sanity checks
@@ -159,7 +159,6 @@ const run = async (reps, objects) => {
 
   // Write to file
   // await fs.writeFile("db.json", JSON.stringify(db));
-  // await fs.rm("db.json");
 };
 
-run(100, 1000);
+run(10, process.argv[2]);

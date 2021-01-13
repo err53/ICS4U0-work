@@ -23,20 +23,18 @@ exports.linearSearch = (notifications, target) => {
  */
 exports.binarySearch = (notifications, target) => {
   let lo = 0,
-    hi = notifications.length - 1,
-    mid = Math.floor((lo + hi) / 2);
+    hi = notifications.length - 1;
   while (lo <= hi) {
-
-    if (sorts.comparator(target, notifications[mid]) == 0) {
+    let mid = Math.floor((lo + hi) / 2);
+    const compareResult = sorts.comparator(target, notifications[mid]);
+    if (compareResult == 0) {
       return mid;
-    } else if (sorts.comparator(target, notifications[mid]) == -1) {
+    } else if (compareResult == -1) {
       // the desired date is less than the midpoint
       hi = mid - 1;
-      mid = Math.floor((lo + hi) / 2);
-    } else if (sorts.comparator(target, notifications[mid]) == 1) {
+    } else {
       // the desired date is more than the midpoint
       lo = mid + 1;
-      mid = Math.floor((lo + hi) / 2);
     }
   }
   return -1;
