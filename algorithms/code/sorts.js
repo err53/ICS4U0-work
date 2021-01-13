@@ -5,17 +5,20 @@
  */
 function comparator(a, b) {
   if (a.appName == b.appName) {
-    return a.date > b.date ? 1 :a.date < b.date ? -1 : 0;
+    return a.date > b.date ? 1 : a.date < b.date ? -1 : 0;
   }
   return a.appName > b.appName ? 1 : -1;
 }
 
+exports.comparator = comparator;
+
 /**
  * Use bubble sort to order notifications by name of app,
  * then by notification text
- * @param {Notification[]} notifications
+ * @param {Notification[]} notifications An array of Notification objects
+ * @returns The sorted array
  */
-function bubbleSort(notifications) {
+exports.bubbleSort = (notifications) => {
   let tmp;
   for (let i = 0; i < notifications.length - 1; i++) {
     for (let j = 0; j < notifications.length - i - 1; j++) {
@@ -27,13 +30,14 @@ function bubbleSort(notifications) {
     }
   }
   return notifications;
-}
+};
 
 /**
  * Use insertion sort to sort notifications
- * @param {Notifications[]} notifications An array of notifications
+ * @param {Notifications[]} notifications An array of Notification objects
+ * @returns The sorted array
  */
-function insertionSort(notifications) {
+exports.insertionSort = (notifications) => {
   for (let i = 1; i < notifications.length; i++) {
     let tmp = notifications[i];
     let j = i - 1;
@@ -42,10 +46,15 @@ function insertionSort(notifications) {
     }
     notifications[j + 1] = tmp;
   }
-  return notifications
-}
+  return notifications;
+};
 
-function selectionSort(notifications) {
+/**
+ * Use selection sort to sort notifications
+ * @param {Notification[]} notifications An array of Notification objects
+ * @returns The sorted array
+ */
+exports.selectionSort = (notifications) => {
   // init minimum val
   let minIdx;
   for (let i = 0; i < notifications.length - 1; i++) {
@@ -64,9 +73,4 @@ function selectionSort(notifications) {
     notifications[minIdx] = tmp;
   }
   return notifications;
-}
-
-exports.comparator = comparator;
-exports.bubbleSort = bubbleSort;
-exports.insertionSort = insertionSort;
-exports.selectionSort = selectionSort;
+};

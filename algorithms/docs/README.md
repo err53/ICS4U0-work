@@ -1,17 +1,20 @@
-# Sorting
+# Algorithms
 
-## Computational Analysis
+## Sorting
 
-### Analysis
+### Computational Analysis
+
+#### Analysis
+
 The bubble sort algorithm has an average time complexity of `O(n^2)`, since it has 2 nested for loops that go through the entire array. In this example, the algorithm has been slightly optimized, as it only loops through the unsorted part of the array, which does improve performance a bit, but the algorithm still behaves like an `O(n^2)` algo.
 
-The insertion sort algorithm also has an average time complexity of `O(n^2)`, since it also has two nested loops that traverse the entire array. It is faster than bubble sort, since it only performs j+1 copies instead of 3*j copies each loop. Again, it has been optimized a bit, but still behaves mostly like an `O(n^2)` algo.
+The insertion sort algorithm also has an average time complexity of `O(n^2)`, since it also has two nested loops that traverse the entire array. It is faster than bubble sort, since it only performs j+1 copies instead of 3\*j copies each loop. Again, it has been optimized a bit, but still behaves mostly like an `O(n^2)` algo.
 
 Selection sort is similar to insertion sort, but instead does more comparisons instead of swaps. It only does as many swaps as there are items in the array, but has to perform `n^2` comparisons. Thus, it also ends up as an `O(n^2)` algo.
 
 Javascript's built-in sorting function, [at least running on the v8 engine](https://v8.dev/blog/array-sort), uses Timsort, a hybrid of merge sort and insertion sort. It has a worst-case performance of `O(n log n)`, best-case performance of `O(n)`, and average performance of `O(n log n)`.
 
-### Data
+#### Data
 
 | Sort Type      | Time at 100 objects | Time at 1000 objects | Time at 10000 objects | Time at 20000 objects |
 | -------------- | ------------------- | -------------------- | --------------------- | --------------------- |
@@ -30,3 +33,8 @@ We can use regression analysis to create an equation for the data points collect
 | Built-in Sort  | `-0.831 + 3.55E-03x + 1.72E-08x^2` | 1   |
 
 Bubble Sort, Insertion Sort, and Selection Sort are all expected to be `O(n^2)` sorts, and given the relatively large coefficient of the x^2 term, that seems to be the case. On the other hand, the Built-in Sort is supposed to be an `O(n log(n))` sort, which we can see by the much smaller coefficient our polynomial regression
+
+### Video
+- The algorithms with thinner bars seem to be more efficient, requiring fewer comparisions and array accesses than the simpler `O(n^2)` algorithms
+- This video provides an interesting visual representation of some of the more advanced sorting algorithms in computer science. While it doesn't fully explain how these algorithms are built, it showcases some of the innate beauty and complexity of some of these well-designed algos.
+- The number of bars or delay time may be changed to skew how efficient the algorithm is in practice. For example, the `O(n^2)` algorithms had fewer bars and a shorter delay, making it seem almost as fast as some of the `O(n log n)` algorithms.
