@@ -71,13 +71,14 @@ Each entry is an average of 100 runs
 
 Again, we can use regression analysis to create equations for each of the searches
 
-| Search Type            | Equation                         | `R^2` |
-| ---------------------- | -------------------------------- | ----- |
-| Linear Search          | 0.134 + 0.0872x + -3.54E-04x^2   | 0.981 |
-| Binary Search          | 0.0424 + -3.79E-03x + 3.3E-04x^2 | 0.685 |
-| Binary Search and Sort | 3.69 + 2.09x + 0.116x^2          | 0.998 |
+| Search Type            | Equation                           | `R^2` |
+| ---------------------- | ---------------------------------- | ----- |
+| Linear Search          | `0.134 + 0.0872x + -3.54E-04x^2`   | 0.981 |
+| Binary Search          | `0.0424 + -3.79E-03x + 3.3E-04x^2` | 0.685 |
+| Binary Search and Sort | `3.69 + 2.09x + 0.116x^2`          | 0.998 |
 
 Linear search has a relatively high `R^2` value, indicating that the data fits the equation relatively well. Binary search has a pretty low `R^2`, so it obviously does not run in polynomial time, matching the prediction of logarithmic time. However, if the sorting time is taken into account, binary search takes much longer than linear search. This is because even a highly optimized sorting algorithm will take longer than `O(n)` time.
 
 ## Recursion
 
+The most common pitfall of recursion is infinite recursion. This happens when the base case is improperly defined, or the modifications that the other recursion cases make cause the base case to never be reached. For example, one mistake I made when programming the digit sum recursive function was passing the entire string back into the function, instead of the substring not including the last digit. That caused an infinite recursion error, which I then fixed after noticing the incorrect parameters I passed to `.slice`. Other issues I needed to tackle included conceptualizing the recursive function: building a recursive function requires you to break the solution down into smaller pieces (decomposition), which is a different way of thinking than traditional iterative programming. Recursive programs also tend to be harder to think through and debug, since instead of just keeping track of maybe two or three loops, you need to keep track of layers of recursive calls.
