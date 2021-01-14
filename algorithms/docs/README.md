@@ -29,6 +29,8 @@ Each entry is an average of 10 runs
 | 9000              | 9547.771962 | 2271.685199    | 4031.247288    | 28.1181272    |
 | 10000             | 11946.08544 | 2572.172086    | 5050.478671    | 31.695652     |
 
+![Sorting Graph](./sorts.svg)
+
 We can use regression analysis to create an equation for the data points collected
 
 | Sort Type      | Equation                          | `R^2` |
@@ -68,6 +70,8 @@ Each entry is an average of 100 runs
 | 8000              | 0.74080656    | 0.03309473    | 23.7122747             |
 | 9000              | 0.74229234    | 0.03246983    | 27.65348602            |
 | 10000             | 0.91542862    | 0.03481905    | 32.27381234            |
+
+![Searching Graph](./searches.svg)
 
 Again, we can use regression analysis to create equations for each of the searches
 
