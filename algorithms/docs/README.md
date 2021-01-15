@@ -80,9 +80,9 @@ Again, we can use regression analysis to create equations for each of the search
 
 | Search Type            | Equation                           | `R^2` |
 | ---------------------- | ---------------------------------- | ----- |
-| Linear Search          | `0.084*x + 0.138`                  | 0.981 |
-| Binary Search          | `0.0424 + -3.79E-03x + 3.3E-04x^2` | 0.685 |
-| Binary Search and Sort | `3.69 + 2.09x + 0.116x^2`          | 0.998 |
+| Linear Search          | `8.4E-05*x + 0.0543`               | 0.981 |
+| Binary Search          | `0.0465 + -4.45E-06x + 3.3E-10x^2` | 0.685 |
+| Binary Search and Sort | `1.71 + 1.86E-03x + 1.16E-07x^2`   | 0.998 |
 
 Linear search has a relatively high `R^2` value, indicating that the data fits the equation relatively well. Binary search is a lot faster, but that also decreases the precision of our measurements: any fluctuations in computing speed or the random test data generation will sway the speed of the algorithm. The low `R^2` value means that we can't make any conclusions about whether it fits a polynomial equation. However, the fact that binary search is significantly faster than linear search suggests that is faster than `O(n)` time, matching our analysis of `O(log n)` time. However, if the sorting time is taken into account, binary search takes much longer than linear search. This is because even a highly optimized sorting algorithm will take longer than `O(n)` time (Timsort takes `O(n log n)` on average, which is still much more than `O(n)`).
 
