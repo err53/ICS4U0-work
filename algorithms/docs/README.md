@@ -6,11 +6,11 @@
 
 The bubble sort algorithm has an worst case time complexity of `O(n^2)`, since it has 2 nested for loops that go through the entire array. In this example, the algorithm has been slightly optimized, as it only loops through the unsorted part of the array, which does improve performance a bit, but the algorithm still behaves like an `O(n^2)` algo in the worst case.
 
-The insertion sort algorithm also has a worst case time complexity of `O(n^2)`, since it also has two nested loops that traverse the entire array. It is faster than bubble sort, since it only performs j+1 copies instead of 3\*j copies each loop. Again, it has been optimized a bit, but still behaves mostly like an `O(n^2)` in the worst case.
+The insertion sort algorithm also has a worst case time complexity of `O(n^2)`, since it also has two nested loops that traverse the entire array. It is faster than bubble sort, since it only performs j+1 copies instead of 3\*j copies each loop, but since time complexity drops the coefficient of the number of operations, it is still classified as an `O(n^2)` algo.
 
-Selection sort is similar to insertion sort, but instead does more comparisons instead of swaps. It only does as many swaps as there are items in the array, but has to perform `n^2` comparisons. Thus, it also ends up as an `O(n^2)` algo.
+Selection sort is similar to insertion sort, but instead does more comparisons instead of swaps. It only does as many swaps as there are items in the array, but has to perform `n^2` comparisons. Thus, dropping the less significant terms and coefficients, it also ends up as an `O(n^2)` algo.
 
-Javascript's built-in sorting function, [at least running on the v8 engine](https://v8.dev/blog/array-sort), uses Timsort, a hybrid of merge sort and insertion sort. It has a worst-case performance of `O(n log n)`, best-case performance of `O(n)`, and average performance of `O(n log n)`.
+Javascript's built-in sorting function, [at least running on the v8 engine](https://v8.dev/blog/array-sort), uses Timsort, a hybrid of merge sort and insertion sort. It has a worst-case performance of `O(n log n)`, best-case performance of `O(n)`, and average performance of `O(n log n)`, according to [Wikipedia](https://en.wikipedia.org/wiki/Timsort) (which then cites the Python mailing list).
 
 #### Data
 
@@ -52,7 +52,7 @@ Bubble Sort, Insertion Sort, and Selection Sort are all expected to be `O(n^2)` 
 
 ### Computational Analysis
 
-Linear search algorithm has a worst case time complexity of `O(n)`, since it needs to check each item of the array. Binary search on a sorted array has a worst case time complexity of `O(log n)`, since it only needs to do about `log_2 n` comparisons. Eg on an array of 100 numbers, binary search needs to perform at most 7 comparisons (to find an item at index 0, it checks index 49, 24, 12, 6, 3, 1, and 0)
+Linear search algorithm has a worst case time complexity of `O(n)`, since it needs to check each item of the array. Binary search on a sorted array has a worst case time complexity of `O(log n)`, since it only needs to do about `log_2 n` operations. Eg on an array of 100 numbers, binary search needs to perform at most 7 comparisons (to find an item at index 0, it checks index 49, 24, 12, 6, 3, 1, and 0)
 
 ### Data
 
@@ -77,11 +77,11 @@ Again, we can use regression analysis to create equations for each of the search
 
 | Search Type            | Equation                           | `R^2` |
 | ---------------------- | ---------------------------------- | ----- |
-| Linear Search          | `0.134 + 0.0872x + -3.54E-04x^2`   | 0.981 |
+| Linear Search          | `0.084*x + 0.138`                  | 0.981 |
 | Binary Search          | `0.0424 + -3.79E-03x + 3.3E-04x^2` | 0.685 |
 | Binary Search and Sort | `3.69 + 2.09x + 0.116x^2`          | 0.998 |
 
-Linear search has a relatively high `R^2` value, indicating that the data fits the equation relatively well. Binary search has a pretty low `R^2`, so it obviously does not run in polynomial time, matching the prediction of logarithmic time. However, if the sorting time is taken into account, binary search takes much longer than linear search. This is because even a highly optimized sorting algorithm will take longer than `O(n)` time.
+Linear search has a relatively high `R^2` value, indicating that the data fits the equation relatively well. Binary search is a lot faster, but that also decreases the precision of our measurements: any fluctuations in computing speed or the random test data generation will sway the speed of the algorithm. The low `R^2` value means that we can't make any conclusions about whether it fits a polynomial equation. However, the fact that binary search is significantly faster than linear search suggests that is faster than `O(n)` time, matching our analysis of `O(log n)` time. However, if the sorting time is taken into account, binary search takes much longer than linear search. This is because even a highly optimized sorting algorithm will take longer than `O(n)` time (Timsort takes `O(n log n)` on average, which is still much more than `O(n)`).
 
 ## Recursion
 
