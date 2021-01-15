@@ -40,12 +40,15 @@ We can use regression analysis to create an equation for the data points collect
 | Selection Sort | `143 + -0.109x + 5.96E-05x^2`     | 0.999 |
 | Built-in Sort  | `0.139 + 2.31E-03x + 8.47E-08x^2` | 0.999 |
 
-Bubble Sort, Insertion Sort, and Selection Sort are all expected to be `O(n^2)` sorts, and given the relatively large coefficient of the x^2 term, that seems to be the case. On the other hand, the Built-in Sort is supposed to be an `O(n log(n))` sort, which we can see by the much smaller coefficient our polynomial regression
+Bubble Sort, Insertion Sort, and Selection Sort are all expected to be `O(n^2)` sorts, and given the relatively large coefficient of the x^2 term, that seems to be the case. On the other hand, the Built-in Sort is supposed to be an `O(n log(n))` sort, which we can see by the much smaller coefficient our polynomial regression.
 
 ### Video
 
 - The algorithms with thinner bars seem to be more efficient, requiring fewer comparisons and array accesses than the simpler `O(n^2)` algorithms
+  - There are more thinner bars, thus more items to be sorted
+  - Since it takes fewer operations to complete the algos with thinner bars, they are more efficient.
 - This video provides an interesting visual representation of some of the more advanced sorting algorithms in computer science. While it doesn't fully explain how these algorithms are built, it showcases some of the innate beauty and complexity of some of these well-designed algos.
+  - For some of the more intuitive algorithms, it may also provide a bit of an intuitive understanding of how the algorithm works (eg, how quick sort sorts the array into groups before ordering the items within each group)
 - The number of bars or delay time may be changed to skew how efficient the algorithm is in practice. For example, the `O(n^2)` algorithms had fewer bars and a shorter delay, making it seem almost as fast as some of the more efficient algorithms.
 
 ## Searching
